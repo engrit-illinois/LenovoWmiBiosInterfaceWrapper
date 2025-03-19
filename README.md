@@ -7,7 +7,9 @@ A PowerShell wrapper for interfacing with modern Lenovo BIOSes via their WMI int
 WIP
 
 # Usage
-WIP
+1. Download `LenovoWmiBiosInterfaceWrapper.psm1` to the appropriate subdirectory of your PowerShell [modules directory](https://github.com/engrit-illinois/how-to-install-a-custom-powershell-module).
+2. Run the desired functions using the documentation below.
+
 
 # Examples
 WIP
