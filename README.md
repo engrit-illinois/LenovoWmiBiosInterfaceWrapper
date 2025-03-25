@@ -55,7 +55,7 @@ E.g. `"WakeOnLAN,ACandBattery","WakeUponAlarm,Disable"` or `@("WakeOnLAN,ACandBa
 
 #### -Force
 Optional switch.  
-By default, if a setting value pair is given and the function detects that the given setting on the target computer is already configured to the given value, it will skip attempting to set that setting.  
+By default, if the function detects that a given setting on the target computer is already configured to the given value, it will skip attempting to set that setting.  
 When `-Force` is specified, it will set it regardless.  
 Not sure why you would need this, but provided in case it's useful for some reason.  
 
