@@ -46,7 +46,7 @@ Default is `10`.
 
 #### -ComputerName [string]
 Required string.  
-The name of the computer from which to gather BIOS settings.  
+The name of the computer on which to set BIOS settings.  
 
 #### -SettingValuePairs [string[]]
 Mandatory string array.  
