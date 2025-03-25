@@ -72,7 +72,7 @@ The CimSession to use when performing various Cim commands.
 Intended for internal use between the module's functions.  
 Default is `10`.  
 
-# Set-LenovoBiosPassword
+## Set-LenovoBiosPassword
 NOT YET IMPLEMENTED.
 Note: per the [documentation](), the BIOS password cannot be intially set via WMI; only changed or removed.  
 
