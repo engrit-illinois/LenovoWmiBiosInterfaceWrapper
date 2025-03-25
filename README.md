@@ -29,9 +29,9 @@ Set-LenovoBiosSetting -ComputerName "comp-name-01" -SettingValuePairs "WakeOnLAN
 
 ## Get-LenovoBiosSettings
 Gets all BIOS settings from a given computer and returns them in an array of custom PowerShell objects, which each have the following properties:
-- Name: The name of a particular setting.
-- Value: The value to which the particular setting is currently set.
-- PossibleValues: The possible valid values to which the particular setting can be set. This information is provided by the BIOS itself, and so exposed here for convenience.
+- `Name`: The name of a particular setting.
+- `Value`: The value to which the particular setting is currently set.
+- `PossibleValues`: The possible valid values to which the particular setting can be set. This information is provided by the BIOS itself, and so exposed here for convenience.
 
 For convenience, BIOS password status information (which is provided by the Lenovo WMI interfaces separately from the BIOS settings themselves) are merged into the array as objects with a bespoke name, prefixed with the string `_Pass_`.  
 
