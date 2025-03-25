@@ -33,12 +33,12 @@ The name of the computer from which to gather BIOS settings.
 #### -OperationTimeoutSec [int]
 Optional integer.  
 The number of seconds to wait for a response from CIM comands before timing out.  
+Default is `10`.  
 
 #### -CimSession [CimSession]
 Optional CimSession object.  
 The CimSession to use when performing various CIM commands.  
 Intended for internal use between the module's functions.  
-Default is `10`.  
 
 ## Set-LenovoBiosSetting
 
