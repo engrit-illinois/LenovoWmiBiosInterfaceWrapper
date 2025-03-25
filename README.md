@@ -40,7 +40,7 @@ The CimSession to use when performing various Cim commands.
 Intended for internal use between the module's functions.  
 Default is `10`.  
 
-# Set-LenovoBiosSetting
+## Set-LenovoBiosSetting
 
 ### Parameters
 
