@@ -53,14 +53,14 @@ Intended for internal use between the module's functions.
 
 ## Set-LenovoBiosSetting
 Sets a given set of BIOS settings on a given computer.  
+As far as I can tell, the Lenovo WMI BIOS interface does not throw errors when a set operation fails for any reason, so this function performs a check afterward to verify whether the setting was actually changed.  
+It will detect and warn about any settings which ended up unchanged for whatever reason, and will also warn if a setting value was given which doesn't appear to be valid, based on the possible valid settings reported by the BIOS.  
 
 ### Parameters
 
 #### -ComputerName [string]
 Required string.  
 The name of the computer on which to set BIOS settings.  
-As far as I can tell, the Lenovo WMI BIOS interface does not throw errors when a set operation fails for any reason, so this function performs a check afterward to verify whether the setting was actually changed.  
-It will detect and warn about any settings which ended up unchanged for whatever reason, and will also warn if a setting value was given which doesn't appear to be valid, based on the possible valid settings reported by the BIOS.  
 
 #### -SettingValuePairs [string[]]
 Mandatory string array.  
