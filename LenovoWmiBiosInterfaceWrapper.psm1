@@ -1,3 +1,4 @@
+# Logging function
 function log {
 	param(
 		[string]$Msg,
@@ -27,6 +28,7 @@ function log {
 	Write-Host @params
 }
 
+# Create and use a CimSession instead of many individual CIM connections for various CIM commands. Should hopefully be a little more efficient.
 function Get-CimSessionObject {
 	param(
 		[Parameter(Mandatory=$true)]
@@ -163,11 +165,13 @@ function Set-LenovoBiosSetting {
 		$possibleValuesString = $oldObject.PossibleValues
 		log "Possible values: `"$possibleValuesString`"" -L 2
 		
+		# Since we can, warn user about likely invalid values/typos
 		$possibleValues = $possibleValuesString.Split(",")
 		if($value -notin $possibleValues) {
 			log "Given value is not recognized as one of the possible values! Setting this value should fail!" -L 2 -E
 		}
 		
+		# Evaluate current state and -Force intention
 		$setValue = $true
 		if($oldValue -ne $value) {
 			log "Current value is not already equal to given value." -L 2
@@ -183,6 +187,7 @@ function Set-LenovoBiosSetting {
 			}
 		}
 		
+		# Perform the set operation
 		if($setValue) {
 			log "Invoking SetBiosSetting CimMethod to set `"$_`"..." -L 1
 			# Note: this operation will still return a success regardless of whether the value was actually changed.
@@ -227,6 +232,7 @@ function Set-LenovoBiosSetting {
 		$possibleValuesString = $newObject.PossibleValues
 		log "Possible values: `"$possibleValuesString`"" -L 2
 		
+		# Evaluate the difference between old, given, and new values
 		if($newValue -ne $value) {
 			log "New value does not equal given value! So setting was not successful!" -L 2 -E
 		}
