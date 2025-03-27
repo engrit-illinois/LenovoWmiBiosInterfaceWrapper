@@ -25,6 +25,16 @@ Set one or more BIOS settings on a given computer:
 Set-LenovoBiosSetting -ComputerName "comp-name-01" -SettingValuePairs "WakeOnLAN,ACandBattery","WakeUponAlarm,Disable"
 ```
 
+Set multiple BIOS settings defined in a CSV file on multiple computers:
+```powershell
+$computers | ForEach-Object {
+    Write-Host "Processing $($_)..."
+    try { Set-LenovoBiosSetting -ComputerName $_ -SettingValuePairsCsv "C:\config.csv" }
+	catch { Write-Host $_ -ForegroundColor "red" }
+    Write-Host "Done processing $($_)."
+}
+```
+
 # Functions
 
 ## Get-LenovoBiosSettings
@@ -46,11 +56,6 @@ Optional integer.
 The number of seconds to wait for a response from CIM comands before timing out.  
 Default is `10`.  
 
-#### -CimSession [CimSession]
-Optional CimSession object.  
-The CimSession to use when performing various CIM commands.  
-Intended for internal use between the module's functions.  
-
 ## Set-LenovoBiosSetting
 Sets a given set of BIOS settings on a given computer.  
 As far as I can tell, the Lenovo WMI BIOS interface does not throw errors when a set operation fails for any reason, so this function performs a check afterward to verify whether the setting was actually changed.  
@@ -63,9 +68,18 @@ Required string.
 The name of the computer on which to set BIOS settings.  
 
 #### -SettingValuePairs [string[]]
-Mandatory string array.  
+Optional string array (if `-SettingValuePairsCsv` is not specified).  
 An array of one or more strings, formatted as comma-separated setting-value pairs to set on the target computer.  
 E.g. `"WakeOnLAN,ACandBattery","WakeUponAlarm,Disable"` or `@("WakeOnLAN,ACandBattery","WakeUponAlarm,Disable")`.  
+
+#### -SettingValuePairsCsv [string]
+Optional string array (if `-SettingValuePairs` is not specified).  
+The full path to a CSV file containing comma-separated setting-value pairs to set on the target computer, one pair per line.  
+E.g.:
+```
+WakeOnLAN,ACandBattery
+WakeUponAlarm,Disable
+```
 
 #### -Force
 Optional switch.  
@@ -80,11 +94,6 @@ NOT YET IMPLEMENTED.
 Optional integer.  
 The number of seconds to wait for a response from CIM comands before timing out.  
 Default is `10`.  
-
-#### -CimSession [CimSession]
-Optional CimSession object.  
-The CimSession to use when performing various CIM commands.  
-Intended for internal use between the module's functions.  
 
 ## Set-LenovoBiosPassword
 NOT YET IMPLEMENTED.
