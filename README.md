@@ -28,10 +28,10 @@ Set-LenovoBiosSetting -ComputerName "comp-name-01" -SettingValuePairs "WakeOnLAN
 Set multiple BIOS settings defined in a CSV file on multiple computers:
 ```powershell
 $computers | ForEach-Object {
-    Write-Host "Processing $($_)..."
-    try { Set-LenovoBiosSetting -ComputerName $_ -SettingValuePairsCsv "C:\config.csv" }
+	Write-Host "Processing $($_)..."
+	try { Set-LenovoBiosSetting -ComputerName $_ -SettingValuePairsCsv "C:\config.csv" }
 	catch { Write-Host $_ -ForegroundColor "red" }
-    Write-Host "Done processing $($_)."
+	Write-Host "Done processing $($_)."
 }
 ```
 
